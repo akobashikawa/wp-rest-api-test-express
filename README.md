@@ -4,7 +4,7 @@ This is simple utility to test WordPress REST API of a site.
 
 Frontend is powered by Bootstrap + VueJS.
 
-Because CORS, it's uses an Express server as middleware.
+Because CORS, it uses an Express server as middleware.
 
 ## Use
 
