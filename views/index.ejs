@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WP REST API</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="container" class="container">
+    <h1>WP REST API</h1>
+    <p>
+      <input type="text" class="form-control" v-model="wpRestServer" placeholder="WordPress Server URL">
+    </p>
+    <h2>Posts</h2>
+    <p>
+      <button class="btn btn-primary" v-on:click="getPosts()">Get Posts</button>
+    </p>
+    <ul class="posts-list">
+      <li class="posts-list-item" v-for="post in posts">
+        <div class="post">
+          <h3>{{ post.title.rendered }}</h3>
+          <p v-html="post.content.rendered"></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+  <script>
+    var app = new Vue({
+      el: '#container',
+      data: {
+        wpRestServer: 'http://miscwp.oo',
+        posts: []
+      },
+      methods: {
+        getPosts: function () {
+          fetch(`http://localhost:3000/wprestapi-get?url=${this.wpRestServer}/wp-json/wp/v2/posts?per-page=10&page=1`)
+            .then(res => res.json())
+            .then(json => {
+              console.log(json);
+              this.posts = json;
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
