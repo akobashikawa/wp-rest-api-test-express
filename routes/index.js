@@ -17,8 +17,9 @@ router.get("/wprestapi-get", function(req, res, next) {
       res.render("json", { json });
     })
     .catch(err => {
-      console.log(err)
-      return err;
+      console.log(err.response)
+      const json = err.response;
+      res.render("json", { json });
     });
 });
 

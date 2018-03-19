@@ -23,5 +23,5 @@ Some wordpress url with REST API enabled.
 
 ### Get Posts
 
-Get first page of 10 posts.
+Get first page of 3 posts.
 

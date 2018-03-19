@@ -16,7 +16,18 @@
     <p>
       <input type="text" class="form-control" v-model="wpRestServer" placeholder="WordPress Server URL">
     </p>
+    <p>
+      Some examples:
+      <ul>
+        <li>https://css-tricks.com</li>
+        <li>http://tri.be</li>
+        <li>http://rulo.me/rulokoba</li>
+      </ul>
+    </p>
     <h2>Posts</h2>
+    <p>
+      <input type="text" class="form-control" v-model="getPostsQuery">
+    </p>
     <p>
       <button class="btn btn-primary" v-on:click="getPosts()">Get Posts</button>
     </p>
@@ -36,12 +47,13 @@
     var app = new Vue({
       el: '#container',
       data: {
-        wpRestServer: 'http://tri.be',
+        wpRestServer: 'https://css-tricks.com',
+        getPostsQuery: `/wp-json/wp/v2/posts?posts_per_page =3&page=1`,
         posts: []
       },
       methods: {
         getPosts: function () {
-          fetch(`http://localhost:3000/wprestapi-get?url=${this.wpRestServer}/wp-json/wp/v2/posts?per-page=10&page=1`)
+          fetch(`http://localhost:3000/wprestapi-get?url=${this.wpRestServer}${this.getPostsQuery}`)
             .then(res => res.json())
             .then(json => {
               console.log(json);
