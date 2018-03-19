@@ -6,7 +6,7 @@ Frontend is powered by Bootstrap + VueJS.
 
 Because CORS, it's uses an Express server as middleware.
 
-# WordPress Server URL
+## WordPress Server URL
 
 Some wordpress url with REST API enabled.
 
