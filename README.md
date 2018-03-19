@@ -9,6 +9,7 @@ Because CORS, it's uses an Express server as middleware.
 ## Use
 
 - Clone this repo
+- cd to the directory
 - `$ npm install`
 - `$ npm start`
 - http://localhost:3000
