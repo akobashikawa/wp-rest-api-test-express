@@ -11,7 +11,7 @@ Because CORS, it's uses an Express server as middleware.
 - Clone this repo
 - `$ npm install`
 - `$ npm start`
-- [http://localhost:3000]
+- http://localhost:3000
 - Specify an url of a wordpress server with rest api enabled (by example http://tri.be)
 
 ## Reference
